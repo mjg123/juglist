@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <style type="text/css">
+       body {
+	   padding: 0; margin: 0;
+       }
+       html, body, #map {
+	   height: 100%; width: 100%;
+       }
+       .jug-icon {
+	   border: 1px solid #888;
+	   background: white;
+	   border-radius: 8px;
+	   box-shadow: 6px 6px 10px #000;
+	   padding: 2px;
+       }
+       .popup a { text-decoration: none; font-weight: bold; }
+       .popup label { font-style: italic;  }
+       .popup h2 {margin: 2px;}
+       .popup .desc {margin: 2px;}
+      </style>
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+  </head>
+  <body>
+      <div id="map"/>
+      <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+      <script src="js/compiled/juglist.js"></script>
+  </body>
+</html>
