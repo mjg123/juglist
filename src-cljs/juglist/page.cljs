@@ -27,13 +27,21 @@
                                    lon (-> posn .-coords .-longitude)]
                                (-> jug-map
                                    (.setView (clj->js [lat lon]) 7)))))))
+(defn ensure-https [url]
+  (if (clojure.string/starts-with? url "http://")
+    (do
+      (println "Found http url: " url)
+      (str "https://" (subs url 7)))
+    (do
+      (println "nice - it was already https: " url)
+      url)))
 
 (defn create-icon [iconUrl]
   (let [iconUrl (if (= iconUrl twitter-default-icon)
                   jug-default-icon
                   iconUrl)]
     (-> js/L
-        (.icon (clj->js {:iconUrl iconUrl
+        (.icon (clj->js {:iconUrl (ensure-https iconUrl)
                          :iconSize [48 48]
                          :iconAnchor [24 48]
                          :popupAnchor [0 -48]
@@ -62,4 +70,3 @@
 (dorun
  (map add-marker (vals d/jug-data)))
 
-(-> d/jug-data first second println)
