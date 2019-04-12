@@ -29,12 +29,8 @@
                                    (.setView (clj->js [lat lon]) 7)))))))
 (defn ensure-https [url]
   (if (clojure.string/starts-with? url "http://")
-    (do
-      (println "Found http url: " url)
-      (str "https://" (subs url 7)))
-    (do
-      (println "nice - it was already https: " url)
-      url)))
+    (str "https://" (subs url 7))
+    url))
 
 (defn create-icon [iconUrl]
   (let [iconUrl (if (= iconUrl twitter-default-icon)
